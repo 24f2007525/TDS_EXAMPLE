@@ -23,7 +23,7 @@
     { "id": "prod-ea886756-017", "name": "Premium Item 17", "category": "home", "price": 446.13, "stock": 73, "rating": 3.6 },
     { "id": "prod-ea886756-018", "name": "Standard Item 18", "category": "clothing", "price": 331.67, "stock": 115, "rating": 1.2 }
   ],
-    "aggregations": {
+      "aggregations": {
     "electronics": {
       "count": 2,
       "inventoryValue": 17149.91
@@ -34,7 +34,7 @@
     },
     "home": {
       "count": 7,
-      "inventoryValue": 182766.19
+      "inventoryValue": 160781.61
     },
     "books": {
       "count": 4,
