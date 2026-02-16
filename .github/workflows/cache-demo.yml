@@ -13,23 +13,25 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # We create a dummy directory to have something to "cache"
+      # Create dummy assets only if they don't exist
       - name: Create dummy assets
         run: |
           mkdir -p my-assets
           echo "Simulated dependency data" > my-assets/data.txt
 
       - name: Cache Dependencies
-        id: cache-step
+        # This ID must be used to reference this step's outputs
+        id: cache_step
         uses: actions/cache@v4
         with:
           path: my-assets
           key: cache-d023fcb
 
-      - name: prime-cache-d023fcb
+      - name: Check Cache Status
         run: |
-          echo "Cache hit result: ${{ steps.cache-step.outputs.cache-hit }}"
-          if [ "${{ steps.cache-step.outputs.cache-hit }}" == "true" ]; then
+          # Use the 'id' from the step above
+          echo "Cache hit result: ${{ steps.cache_step.outputs.cache-hit }}"
+          if [ "${{ steps.cache_step.outputs.cache-hit }}" == "true" ]; then
             echo "Success: Cache hit!"
           else
             echo "Notice: Cache miss. On next run, this will be a hit."
